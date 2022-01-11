@@ -1,9 +1,11 @@
 import React from 'react';
 
+import BlogCard from '../components/BlogCard';
+
 const Dashboard = () => {
   return (
-    <div>
-      dashboard
+    <div className='blog-container'>
+  <BlogCard/>
     </div>
   );
 }
