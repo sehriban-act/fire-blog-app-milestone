@@ -33,7 +33,7 @@ const NewBlog = () => {
       }
     }
   return (
-    <div className='register-form' >
+    <div  >
     <BlogForm info={info} setInfo={setInfo} handleFormSubmit={handleFormSubmit} />
     </div>
   );

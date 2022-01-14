@@ -4,6 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 import {signOut} from 'firebase/auth';
 
+import { Button, Container, Dropdown, DropdownButton, FormControl, Nav, NavDropdown, Offcanvas } from "react-bootstrap";
+
+import { Form } from "semantic-ui-react";
+
+import cw from "../assets/cw.jpeg";
 import {AuthContext} from "../context/AuthContext";
 import {auth} from "../helpers/firebase";
 
@@ -18,45 +23,49 @@ const Navbar = () => {
 
     return(
         <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+     
+    <nav className="navbar navbar-expand-lg ">
         <div className="container-fluid">
-          <a className="navbar-brand " href="/" style={{ color: "white" }}>
-            React Movie App
+        <img src={cw} alt="cw"/>
+          <a className="navbar-brand" href="/" style={{ color: "white" }}><p><span>-</span>
+    MileStone<span>-</span></p>
           </a>
-          <div className="buttons">
-            {currentUser ? (
-              <h3>{currentUser.displayName}</h3>
-            ) : (
-              <button
-                type="button"
-                className="ms-2 btn btn-outline-light"
-                onClick={() => navigate("/login")}
-              >
-                Login
-              </button>
-            )}
-            {currentUser ? (
-              <button
-                type="button"
-                className="ms-2 btn btn-outline-light"
-                onClick={() => signOutFunc()}
-              >
-                Logout 
-              </button>
-            ) : (
-              <button
-                type="button"
-                className="ms-2 btn btn-outline-light"
-                onClick={() => navigate("/register")}
-              >
-                Register
-              </button>
-            )}
-          </div>
+          {currentUser &&
+            <h3>{currentUser.displayName}</h3>}
+          <DropdownButton id="dropdown-basic-button" title={<i class="fas fa-user-alt"></i>} >
+{currentUser ? (
+  <Dropdown.Item onClick={() => navigate("/profile")}>Profile</Dropdown.Item>
+ 
+) : (  
+  <Dropdown.Item onClick={() => navigate("/login")}>Login</Dropdown.Item>
+)}
+{currentUser ? (
+  <Dropdown.Item onClick={() => navigate("/newblog")}>New</Dropdown.Item>
+
+  
+) : (
+  <Dropdown.Item onClick={() => navigate("/register")}>Register</Dropdown.Item>
+)}
+{currentUser && 
+  <Dropdown.Item onClick={() => signOutFunc()}>Logout</Dropdown.Item>
+
+  }
+
+
+
+</DropdownButton> 
+         
+    
         </div>
-      </nav>
+            </nav>
     </div>
     )
 }
 
 export default Navbar;
+
+
+
+
+
+

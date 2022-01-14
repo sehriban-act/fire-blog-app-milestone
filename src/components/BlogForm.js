@@ -1,5 +1,5 @@
 import React from 'react';
-
+import blog from "../assets/blog.png";
 import { Grid,Form,Segment,Button} from 'semantic-ui-react';
 const BlogForm = ({info,setInfo,handleFormSubmit}) => {
     const handleInputChange=(e)=>{
@@ -15,7 +15,10 @@ const BlogForm = ({info,setInfo,handleFormSubmit}) => {
     
       }
   return (
-      
+
+    <div className="register-form">
+
+    <img src={blog} alt="sample-movie" />
     <Grid textAlign="center" verticalAlign="middle" >
          <Grid.Column style={{ width: 600 }}>
             <div className="ui piled segments">
@@ -58,13 +61,17 @@ const BlogForm = ({info,setInfo,handleFormSubmit}) => {
               required
             />
             
-            <Button color="teal" fluid size="large">
-         Submit
-            </Button>
+            <input
+            type="button"
+            className="btn  form-control" 
+            value="submit"
+            onClick={''}
+          />
           </Segment>
         </Form>
       </Grid.Column> 
       </Grid>
+      </div>
   );
 }
 

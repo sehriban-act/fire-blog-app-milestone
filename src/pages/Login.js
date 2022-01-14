@@ -1,16 +1,18 @@
 import { useState } from 'react';
 
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import {auth} from '../helpers/firebase'
+import { signInWithEmailAndPassword} from 'firebase/auth';
+
 import { useNavigate } from 'react-router-dom';
+import blog from "../assets/blog.png";
 
-
+import { useAuth } from '../context/AuthContext';
+import { auth } from '../helpers/firebase';
 const Login = () => {
 
     const navigate = useNavigate()
     const [ email, setEmail ] = useState();
     const [ password, setPassword ] = useState();
-    
+    const {  loginWithGoogle } = useAuth()
     const handleSubmit = async () => {
         try{
             
@@ -22,13 +24,17 @@ const Login = () => {
             alert(err.message)
         }
     }
-
+    const handleGoogleProvider = () => {
+      loginWithGoogle();
+    };
+  
     return (
-        <div className="register">
-      <div className="form-image">
-        <img src={"https://picsum.photos/800/800"} alt="sample-movie" />
-      </div>
-      <div className="register-form">
+        <div className="bg-image">
+        <div className="col s12 m6 offset-m3 center-align">
+        <div className="register-form">
+
+        <img src={blog} alt="sample-movie" />
+        
         <h1 className="form-title display-3">Login</h1>
         <form id="login">
           <div className="mb-3">
@@ -56,14 +62,23 @@ const Login = () => {
             />
            
           </div>
-          <input
+         <input
             type="button"
-            className="btn btn-primary form-control"
+            className="btn  form-control" 
             value="Login"
             onClick={handleSubmit}
           />
+          <a className="oauth-container btn google darken-4 white black-text" href="/users/google-oauth/" >
+          <div className="left">
+              <img  alt="Google sign-in" 
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+          </div>
+          Login with Google
+      </a>
+ 
+         
         </form>
-        
+        </div>
       </div>
     </div>
     )
