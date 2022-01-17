@@ -16,6 +16,7 @@ const NewBlog = () => {
             imageUrl:info.imageUrl,
            content:info.content
         });
+        console.log(info);
     }
     const updateInfo=(info)=>{
         const db = getDatabase();

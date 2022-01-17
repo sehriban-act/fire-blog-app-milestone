@@ -5,7 +5,10 @@ import { getDatabase,onValue,query,ref} from 'firebase/database';
 const BlogCard = () => {
     const useFetch=()=>{
         const [contactList, setContactList] = useState();
-        const [isLoading,setIsLoading]=useState(false)
+        const [isLoading,setIsLoading]=useState(false);
+        const[date,setDate]=useState(new Date());
+       
+       
         useEffect(()=>{
           setIsLoading(true)
     
@@ -21,6 +24,7 @@ const BlogCard = () => {
             }
             setContactList(contactArray);
             setIsLoading(false)
+            setDate()
           })
         },[]);
         return {isLoading,contactList};
@@ -38,6 +42,8 @@ const BlogCard = () => {
                 <div className='blog-info'>
                 <h3>{item.title}</h3>
                 <p >{item.content}</p>
+            
+                
                 </div>
               </div>
               

@@ -1,6 +1,8 @@
 import React from 'react';
-import blog from "../assets/blog.png";
+
 import { Grid,Form,Segment,Button} from 'semantic-ui-react';
+
+import blog from "../assets/blog.png";
 const BlogForm = ({info,setInfo,handleFormSubmit}) => {
     const handleInputChange=(e)=>{
         // const name=e.target.name
@@ -65,7 +67,7 @@ const BlogForm = ({info,setInfo,handleFormSubmit}) => {
             type="button"
             className="btn  form-control" 
             value="submit"
-            onClick={''}
+            onClick={handleFormSubmit}
           />
           </Segment>
         </Form>
